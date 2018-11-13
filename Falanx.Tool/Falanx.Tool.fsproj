@@ -13,6 +13,7 @@
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DirectGenerator.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
