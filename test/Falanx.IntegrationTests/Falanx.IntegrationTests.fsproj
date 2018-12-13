@@ -1,17 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\paket-files\integrationtests\enricosada\dotnet-proj-info\test\dotnet-proj-info.Tests\FileUtils.fs">
-      <Paket>True</Paket>
-      <Link>paket-files/FileUtils.fs</Link>
-    </Compile>
-    <Compile Include="TestAssets.fs" />
-    <Compile Include="Sample.fs" />
+    <EmbeddedResource Remove="schemas\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="JsonTests.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="paket.references" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Falanx.Proto.Codec.Binary\Falanx.Proto.Codec.Binary.fsproj" />
+    <ProjectReference Include="..\..\Falanx.Proto.Codec.Json\Falanx.Proto.Codec.Json.fsproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProtobufSchema Include="schemas\falanx_test.proto" />
+  </ItemGroup>
+  <Import Project="..\..\Falanx.Tool\build\Falanx.Tool.targets" />
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

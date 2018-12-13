@@ -58,11 +58,10 @@ module TypeGeneration =
               RuntimeType = propertyType } }
                      
     let createEnum scope lookup (enum: ProtoEnum) =
-        let _, providedEnum = 
-            TypeResolver.resolveNonScalar scope enum.Name lookup
-            |> function 
-               | Some x -> x
-               | None -> failwithf "Enum '%s' is not defined" enum.Name
+        let providedEnum = 
+            match TypeResolver.resolveNonScalar scope enum.Name lookup with
+            | Some(_typeKind, providedType) -> providedType
+            | None -> failwithf "Enum '%s' is not defined" enum.Name
         
         enum.Items
         |> Seq.map (fun item -> Naming.upperSnakeToPascal item.Name, item.Value)
@@ -72,35 +71,39 @@ module TypeGeneration =
         
     let private createMapDescriptor scope typesLookup (name: string) (keyTy: PKeyType) (valueTy: PType) position =
         let keyTypeName = 
-            match keyTy with 
-            | TKInt32 -> TInt32 | TKInt64 -> TInt64 
-            | TKUInt32 -> TUInt32 | TKUInt64 -> TUInt64 
-            | TKSInt32 -> TSInt32 | TKSInt64 -> TSInt64
-            | TKFixed32 -> TFixed32 | TKFixed64 -> TFixed64
-            | TKSFixed32 -> TSFixed32 | TKSFixed64 -> TSFixed64
-            | TKBool -> TBool
-            | TKString -> TString
-            |> TypeResolver.ptypeToString
+            let keyType =
+                match keyTy with 
+                | TKInt32 -> TInt32
+                | TKInt64 -> TInt64 
+                | TKUInt32 -> TUInt32
+                | TKUInt64 -> TUInt64 
+                | TKSInt32 -> TSInt32
+                | TKSInt64 -> TSInt64
+                | TKFixed32 -> TFixed32
+                | TKFixed64 -> TFixed64
+                | TKSFixed32 -> TSFixed32
+                | TKSFixed64 -> TSFixed64
+                | TKBool -> TBool
+                | TKString -> TString
+            TypeResolver.ptypeToString keyType
             
         let valueTypeName = TypeResolver.ptypeToString valueTy
         let valueTypeKind, valueType = 
-            TypeResolver.resolve scope valueTypeName typesLookup 
-            |> function
-               | Some x -> x
-               | None -> failwithf "Can't resolve type '%s'" valueTypeName
-            |> function
-                | Enum(_scope, _name) as e, _ -> e, typeof<proto_int32>
-                | kind, ty -> kind, ty
+            match TypeResolver.resolve scope valueTypeName typesLookup with
+            | Some (Enum _ as e, _) ->
+                e, typeof<proto_int32>
+            | Some(kind, ty) ->
+                kind, ty
+            | None -> failwithf "Can't resolve type '%s'" valueTypeName               
     
         let keyType = 
-            TypeResolver.resolveScalar keyTypeName 
-            |> function 
-               | Some x -> x
-               | None -> failwithf "Can't resolve scalar type '%s'" keyTypeName
+            match TypeResolver.resolveScalar keyTypeName with
+            | Some x -> x
+            | None -> failwithf "Can't resolve scalar type '%s'" keyTypeName
         
         let mapType = Expr.makeGenericType [ keyType; valueType] typedefof<proto_map<_, _>>
     
-        let property, field = ProvidedTypeDefinition.mkPropertyWithField mapType (Naming.snakeToPascal name) true
+        let property, field = ProvidedTypeDefinition.mkRecordPropertyWithField mapType (Naming.snakeToPascal name) true
         
         { KeyType = 
             { ProtobufType = keyTypeName
@@ -259,30 +262,32 @@ module TypeGeneration =
              let typeInfo = { Type = providedType; Properties = properties; OneOfGroups = oneOfDescriptors; Maps = maps }
         
              codecs
-             |> Set.iter (fun codec -> match codec with
-                          | Binary ->
-                                 let staticSerializeMethod = Falanx.Proto.Codec.Binary.Serialization.createSerializeMethod typeInfo
-                                 let staticDeserializeMethod = Falanx.Proto.Codec.Binary.Deserialization.createDeserializeMethod typeInfo
-                                 providedType.AddMember staticSerializeMethod
-                                 providedType.AddMember staticDeserializeMethod
-                                 
-                                 providedType.AddInterfaceImplementation typeof<IMessage>
-                                 
-                                 let serializeMethod = Falanx.Proto.Codec.Binary.Serialization.createInstanceSerializeMethod typeInfo staticSerializeMethod
-                                 providedType.AddMember serializeMethod
-                                 providedType.DefineMethodOverride(serializeMethod, typeof<IMessage>.GetMethod("Serialize"))
-                                 
-                                 let readFromMethod = Falanx.Proto.Codec.Binary.Deserialization.createReadFromMethod typeInfo
-                                 providedType.AddMember readFromMethod
-                                 providedType.DefineMethodOverride(readFromMethod, typeof<IMessage>.GetMethod("ReadFrom"))
-                                 
-                                 let serializedLengthMethod = Falanx.Proto.Codec.Binary.Serialization.createSerializedLength typeInfo
-                                 providedType.AddMember serializedLengthMethod
-                                 providedType.DefineMethodOverride(serializedLengthMethod, typeof<IMessage>.GetMethod("SerializedLength"))
-                          | Json ->
-                              let jsonObjCodec = Falanx.Proto.Codec.Json.Codec.createJsonObjCodec typeInfo
-                              providedType.AddMember jsonObjCodec
-                         )
+             |> Set.iter (
+                fun codec -> 
+                    match codec with
+                    | Binary ->
+                        let staticSerializeMethod = Falanx.Proto.Codec.Binary.Serialization.createSerializeMethod typeInfo
+                        let staticDeserializeMethod = Falanx.Proto.Codec.Binary.Deserialization.createDeserializeMethod typeInfo
+                        providedType.AddMember staticSerializeMethod
+                        providedType.AddMember staticDeserializeMethod
+
+                        providedType.AddInterfaceImplementation typeof<IMessage>
+
+                        let serializeMethod = Falanx.Proto.Codec.Binary.Serialization.createInstanceSerializeMethod typeInfo staticSerializeMethod
+                        providedType.AddMember serializeMethod
+                        providedType.DefineMethodOverride(serializeMethod, typeof<IMessage>.GetMethod("Serialize"))
+
+                        let readFromMethod = Falanx.Proto.Codec.Binary.Deserialization.createReadFromMethod typeInfo
+                        providedType.AddMember readFromMethod
+                        providedType.DefineMethodOverride(readFromMethod, typeof<IMessage>.GetMethod("ReadFrom"))
+
+                        let serializedLengthMethod = Falanx.Proto.Codec.Binary.Serialization.createSerializedLength typeInfo
+                        providedType.AddMember serializedLengthMethod
+                        providedType.DefineMethodOverride(serializedLengthMethod, typeof<IMessage>.GetMethod("SerializedLength"))
+                    | Json ->
+                        let jsonObjCodec = Falanx.Proto.Codec.Json.Codec.createJsonObjCodec typeInfo
+                        providedType.AddMember jsonObjCodec
+                        )
                           
              providedType
          with
@@ -309,3 +314,4 @@ module TypeGeneration =
             let deepest = loop rest root
             root, deepest
         | _ -> invalidArg "package" "Package name cannot be empty."
+

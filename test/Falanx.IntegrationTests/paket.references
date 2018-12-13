@@ -1,8 +1,8 @@
+Froto.Parser
+Froto.Serialization
+Fleece.NewtonsoftJson
+
 group IntegrationTests
-
-FSharp.Core
-Expecto
-Expecto.TestResults
-MedallionShell
-
-File: FileUtils.fs
+	FSharp.Core
+	Expecto
+	Expecto.TestResults
