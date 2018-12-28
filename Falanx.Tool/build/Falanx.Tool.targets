@@ -35,7 +35,7 @@
         <!-- Autodetect, are we running from under falanx solution or project referencing falanx nuget -->
         <PropertyGroup>
             <FalanxToolPath Condition="Exists('$(MSBuildThisFileDirectory)..\tools\falanx.dll')">dotnet "$(MSBuildThisFileDirectory)..\tools\falanx.dll"</FalanxToolPath>
-            <FalanxToolPath Condition="Exists('$(MSBuildProjectDirectory)..\..\Falanx.Tool\Falanx.Tool.fsproj')">dotnet run -p "$(MSBuildProjectDirectory)..\..\Falanx.Tool\Falanx.Tool.fsproj" --</FalanxToolPath>
+            <FalanxToolPath Condition="Exists('$(MSBuildProjectDirectory)\..\..\Falanx.Tool\Falanx.Tool.fsproj')">dotnet run -p "$(MSBuildProjectDirectory)\..\..\Falanx.Tool\Falanx.Tool.fsproj" --</FalanxToolPath>
         </PropertyGroup>
         <Error Condition=" '$(FalanxToolPath)' == '' " Text="Can not find falanx.dll" />
 

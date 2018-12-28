@@ -6,6 +6,7 @@ open System.Collections.Generic
 open Falanx.Proto.Codec.Binary
 open Falanx.Proto.Codec.Binary.Primitives
 
+
 module SampleMessage =
     type test_oneof =
         | First_name of First_name : string
@@ -16,7 +17,8 @@ module SampleMessage =
 type SampleMessage =
     { mutable testOneof : SampleMessage.test_oneof option
       mutable martId : int option }
-    
+
+  
     static member Serialize(m : SampleMessage, buffer : ZeroCopyBuffer) =
         Primitives.writeOption<Int32> (Primitives.writeInt32) (1) (buffer) (m.martId)
         if match m.testOneof with

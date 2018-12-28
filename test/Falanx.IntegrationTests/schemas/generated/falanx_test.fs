@@ -38,7 +38,7 @@ type TestAllTypes =
       mutable repeatedDouble : float ResizeArray
       mutable repeatedBool : bool ResizeArray
       mutable repeatedString : string ResizeArray }
-    
+
     static member JsonObjCodec =
         fun singleInt32 singleInt64 singleUint32 singleUint64 singleSint32 singleSint64 singleFixed32 singleFixed64 singleSfixed32 singleSfixed64 singleFloat singleDouble singleBool singleString repeatedInt32 repeatedInt64 repeatedUint32 repeatedUint64 repeatedSint32 repeatedSint64 repeatedFixed32 repeatedFixed64 repeatedSfixed32 repeatedSfixed64 repeatedFloat repeatedDouble repeatedBool repeatedString -> 
             { singleInt32 = singleInt32
@@ -74,309 +74,309 @@ type TestAllTypes =
                 (f)
         |> fun codec -> 
             let decode =
-                let _bind_8a5608f0b53d4652880eecceab3d903b, _ = codec
-                _bind_8a5608f0b53d4652880eecceab3d903b
+                let _bind_77365ba3df154b2791d7e93fde3a7184, _ = codec
+                _bind_77365ba3df154b2791d7e93fde3a7184
             
             let encode =
-                let _, _bind_231ad66b81554ac699140c178630b659 = codec
-                _bind_231ad66b81554ac699140c178630b659
+                let _, _bind_1066398a16774dc99b7e3dfb751a1e40 = codec
+                _bind_1066398a16774dc99b7e3dfb751a1e40
             
             Fleece.Newtonsoft.jfieldOpt<TestAllTypes, Int32, Option<Int64> -> Option<UInt32> -> Option<UInt64> -> Option<Int32> -> Option<Int64> -> Option<UInt32> -> Option<UInt64> -> Option<Int32> -> Option<Int64> -> Option<Single> -> Option<Double> -> Option<Boolean> -> Option<String> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<Single> -> List<Double> -> List<Boolean> -> List<String> -> TestAllTypes> 
                 ("singleInt32") (fun x -> x.singleInt32) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_e45894a43e6b430bbd5ef237caaceed4, _ = codec
-                _bind_e45894a43e6b430bbd5ef237caaceed4
+                let _bind_f0c387e696a1419fa9b97746e5748978, _ = codec
+                _bind_f0c387e696a1419fa9b97746e5748978
             
             let encode =
-                let _, _bind_3e9f746c55774fa88e5689cf3f6d0d36 = codec
-                _bind_3e9f746c55774fa88e5689cf3f6d0d36
+                let _, _bind_65c08580a41444fc946edb04cd482116 = codec
+                _bind_65c08580a41444fc946edb04cd482116
             
             Fleece.Newtonsoft.jfieldOpt<TestAllTypes, Int64, Option<UInt32> -> Option<UInt64> -> Option<Int32> -> Option<Int64> -> Option<UInt32> -> Option<UInt64> -> Option<Int32> -> Option<Int64> -> Option<Single> -> Option<Double> -> Option<Boolean> -> Option<String> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<Single> -> List<Double> -> List<Boolean> -> List<String> -> TestAllTypes> 
                 ("singleInt64") (fun x -> x.singleInt64) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_77adb717e72c4d90898c2d6487648d1c, _ = codec
-                _bind_77adb717e72c4d90898c2d6487648d1c
+                let _bind_8c4d0bb913a149689815c5369fc2f088, _ = codec
+                _bind_8c4d0bb913a149689815c5369fc2f088
             
             let encode =
-                let _, _bind_4711eda9a1264666a0c9707c333d4647 = codec
-                _bind_4711eda9a1264666a0c9707c333d4647
+                let _, _bind_9adfac889a7342b387e362eb3cea1847 = codec
+                _bind_9adfac889a7342b387e362eb3cea1847
             
             Fleece.Newtonsoft.jfieldOpt<TestAllTypes, UInt32, Option<UInt64> -> Option<Int32> -> Option<Int64> -> Option<UInt32> -> Option<UInt64> -> Option<Int32> -> Option<Int64> -> Option<Single> -> Option<Double> -> Option<Boolean> -> Option<String> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<Single> -> List<Double> -> List<Boolean> -> List<String> -> TestAllTypes> 
                 ("singleUint32") (fun x -> x.singleUint32) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_cc06df0cd6474422b555ebb4161d8d3e, _ = codec
-                _bind_cc06df0cd6474422b555ebb4161d8d3e
+                let _bind_dc63d19dd35d452e9001b9e779c765a4, _ = codec
+                _bind_dc63d19dd35d452e9001b9e779c765a4
             
             let encode =
-                let _, _bind_6fd9577baea14e29928dd293842beb88 = codec
-                _bind_6fd9577baea14e29928dd293842beb88
+                let _, _bind_4ed2cf410f8c499ca19f86ab84d5faac = codec
+                _bind_4ed2cf410f8c499ca19f86ab84d5faac
             
             Fleece.Newtonsoft.jfieldOpt<TestAllTypes, UInt64, Option<Int32> -> Option<Int64> -> Option<UInt32> -> Option<UInt64> -> Option<Int32> -> Option<Int64> -> Option<Single> -> Option<Double> -> Option<Boolean> -> Option<String> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<Single> -> List<Double> -> List<Boolean> -> List<String> -> TestAllTypes> 
                 ("singleUint64") (fun x -> x.singleUint64) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_97d44b5066ab4032a88fc38463b818b8, _ = codec
-                _bind_97d44b5066ab4032a88fc38463b818b8
+                let _bind_2a443975ec4c4ac3a751f95577dcd79d, _ = codec
+                _bind_2a443975ec4c4ac3a751f95577dcd79d
             
             let encode =
-                let _, _bind_24ffb8720fd64f9294d24adeb2e21280 = codec
-                _bind_24ffb8720fd64f9294d24adeb2e21280
+                let _, _bind_09a59944b3ad4cb3bca5639254d469a9 = codec
+                _bind_09a59944b3ad4cb3bca5639254d469a9
             
             Fleece.Newtonsoft.jfieldOpt<TestAllTypes, Int32, Option<Int64> -> Option<UInt32> -> Option<UInt64> -> Option<Int32> -> Option<Int64> -> Option<Single> -> Option<Double> -> Option<Boolean> -> Option<String> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<Single> -> List<Double> -> List<Boolean> -> List<String> -> TestAllTypes> 
                 ("singleSint32") (fun x -> x.singleSint32) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_bf6032a5a06a4b0ba33957a4874b4f3c, _ = codec
-                _bind_bf6032a5a06a4b0ba33957a4874b4f3c
+                let _bind_197937325b884eedba6023da28d5b2cd, _ = codec
+                _bind_197937325b884eedba6023da28d5b2cd
             
             let encode =
-                let _, _bind_bc6107472d654ece962094a0ca4e0d1f = codec
-                _bind_bc6107472d654ece962094a0ca4e0d1f
+                let _, _bind_7a0d15b3fe5e44c2b12b8747ffebdd8e = codec
+                _bind_7a0d15b3fe5e44c2b12b8747ffebdd8e
             
             Fleece.Newtonsoft.jfieldOpt<TestAllTypes, Int64, Option<UInt32> -> Option<UInt64> -> Option<Int32> -> Option<Int64> -> Option<Single> -> Option<Double> -> Option<Boolean> -> Option<String> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<Single> -> List<Double> -> List<Boolean> -> List<String> -> TestAllTypes> 
                 ("singleSint64") (fun x -> x.singleSint64) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_17a4f71c70124184bc96f29f2af025c7, _ = codec
-                _bind_17a4f71c70124184bc96f29f2af025c7
+                let _bind_0d950d12d6044f41ad8723a65443661d, _ = codec
+                _bind_0d950d12d6044f41ad8723a65443661d
             
             let encode =
-                let _, _bind_b7e9961a2c8e4bdabde82400ff86554f = codec
-                _bind_b7e9961a2c8e4bdabde82400ff86554f
+                let _, _bind_0f9c3c46a742482daad91a4ebf1dd219 = codec
+                _bind_0f9c3c46a742482daad91a4ebf1dd219
             
             Fleece.Newtonsoft.jfieldOpt<TestAllTypes, UInt32, Option<UInt64> -> Option<Int32> -> Option<Int64> -> Option<Single> -> Option<Double> -> Option<Boolean> -> Option<String> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<Single> -> List<Double> -> List<Boolean> -> List<String> -> TestAllTypes> 
                 ("singleFixed32") (fun x -> x.singleFixed32) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_28a25c05229047dbb5fbbce1675df487, _ = codec
-                _bind_28a25c05229047dbb5fbbce1675df487
+                let _bind_d96e410fc88e4c93ae90563f0542a064, _ = codec
+                _bind_d96e410fc88e4c93ae90563f0542a064
             
             let encode =
-                let _, _bind_bc47c84950ac413cbeb938eeee51cf11 = codec
-                _bind_bc47c84950ac413cbeb938eeee51cf11
+                let _, _bind_a8e6f6e12a3b4afc8a99d7fffdccf6ed = codec
+                _bind_a8e6f6e12a3b4afc8a99d7fffdccf6ed
             
             Fleece.Newtonsoft.jfieldOpt<TestAllTypes, UInt64, Option<Int32> -> Option<Int64> -> Option<Single> -> Option<Double> -> Option<Boolean> -> Option<String> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<Single> -> List<Double> -> List<Boolean> -> List<String> -> TestAllTypes> 
                 ("singleFixed64") (fun x -> x.singleFixed64) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_c6215cf669a4401db1e182d5604f39c0, _ = codec
-                _bind_c6215cf669a4401db1e182d5604f39c0
+                let _bind_295f71c8f0144100b895a1045039cd02, _ = codec
+                _bind_295f71c8f0144100b895a1045039cd02
             
             let encode =
-                let _, _bind_04191bde715146688eff43a90d5ef3c6 = codec
-                _bind_04191bde715146688eff43a90d5ef3c6
+                let _, _bind_7b73154649f34b398c6d4ab3fd5b29c2 = codec
+                _bind_7b73154649f34b398c6d4ab3fd5b29c2
             
             Fleece.Newtonsoft.jfieldOpt<TestAllTypes, Int32, Option<Int64> -> Option<Single> -> Option<Double> -> Option<Boolean> -> Option<String> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<Single> -> List<Double> -> List<Boolean> -> List<String> -> TestAllTypes> 
                 ("singleSfixed32") (fun x -> x.singleSfixed32) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_d5e3c5d8fa3845688157e327bb03a765, _ = codec
-                _bind_d5e3c5d8fa3845688157e327bb03a765
+                let _bind_4bd95db8d4cd4511b290e07836ad905e, _ = codec
+                _bind_4bd95db8d4cd4511b290e07836ad905e
             
             let encode =
-                let _, _bind_d0f54d9f03a3453590b12e665274c7d2 = codec
-                _bind_d0f54d9f03a3453590b12e665274c7d2
+                let _, _bind_3809c9d895cb4c7287c4684a4dcbb3bb = codec
+                _bind_3809c9d895cb4c7287c4684a4dcbb3bb
             
             Fleece.Newtonsoft.jfieldOpt<TestAllTypes, Int64, Option<Single> -> Option<Double> -> Option<Boolean> -> Option<String> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<Single> -> List<Double> -> List<Boolean> -> List<String> -> TestAllTypes> 
                 ("singleSfixed64") (fun x -> x.singleSfixed64) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_28231ec93a6e452db13ed00d11de113a, _ = codec
-                _bind_28231ec93a6e452db13ed00d11de113a
+                let _bind_3819ee8240b948038a6e1a88f8d7b503, _ = codec
+                _bind_3819ee8240b948038a6e1a88f8d7b503
             
             let encode =
-                let _, _bind_1ab5096f12f646d1872b7d26bcfaa925 = codec
-                _bind_1ab5096f12f646d1872b7d26bcfaa925
+                let _, _bind_fb8657559c9b40aeb5a54dfdbbafb2fc = codec
+                _bind_fb8657559c9b40aeb5a54dfdbbafb2fc
             
             Fleece.Newtonsoft.jfieldOpt<TestAllTypes, Single, Option<Double> -> Option<Boolean> -> Option<String> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<Single> -> List<Double> -> List<Boolean> -> List<String> -> TestAllTypes> 
                 ("singleFloat") (fun x -> x.singleFloat) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_1c1a765863bd462dbc6c887953828577, _ = codec
-                _bind_1c1a765863bd462dbc6c887953828577
+                let _bind_26834ec31f37407fa38b4dbc048dda64, _ = codec
+                _bind_26834ec31f37407fa38b4dbc048dda64
             
             let encode =
-                let _, _bind_97b855672e524576a3e0c9b3adb53f65 = codec
-                _bind_97b855672e524576a3e0c9b3adb53f65
+                let _, _bind_686cea12f9b14714a6a2442520ffff9f = codec
+                _bind_686cea12f9b14714a6a2442520ffff9f
             
             Fleece.Newtonsoft.jfieldOpt<TestAllTypes, Double, Option<Boolean> -> Option<String> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<Single> -> List<Double> -> List<Boolean> -> List<String> -> TestAllTypes> 
                 ("singleDouble") (fun x -> x.singleDouble) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_1123db9793da45ada1ed005524dd14c6, _ = codec
-                _bind_1123db9793da45ada1ed005524dd14c6
+                let _bind_9bd1ad423e774962aef6fdbea9854ea2, _ = codec
+                _bind_9bd1ad423e774962aef6fdbea9854ea2
             
             let encode =
-                let _, _bind_3faf6cc943ac4fe58e75275e27efaba8 = codec
-                _bind_3faf6cc943ac4fe58e75275e27efaba8
+                let _, _bind_7b3bfd32b9cc4db4930b685f000b91c3 = codec
+                _bind_7b3bfd32b9cc4db4930b685f000b91c3
             
             Fleece.Newtonsoft.jfieldOpt<TestAllTypes, Boolean, Option<String> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<Single> -> List<Double> -> List<Boolean> -> List<String> -> TestAllTypes> 
                 ("singleBool") (fun x -> x.singleBool) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_b4a71deaed304156ae192aac83bf6c2f, _ = codec
-                _bind_b4a71deaed304156ae192aac83bf6c2f
+                let _bind_4798100f0c6b497c9f3172afdc272d75, _ = codec
+                _bind_4798100f0c6b497c9f3172afdc272d75
             
             let encode =
-                let _, _bind_af1779d0215d48e3b8c303a6da065b26 = codec
-                _bind_af1779d0215d48e3b8c303a6da065b26
+                let _, _bind_118ce56218c34f2abeb0d9aa30918a60 = codec
+                _bind_118ce56218c34f2abeb0d9aa30918a60
             
             Fleece.Newtonsoft.jfieldOpt<TestAllTypes, String, List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<Single> -> List<Double> -> List<Boolean> -> List<String> -> TestAllTypes> 
                 ("singleString") (fun x -> x.singleString) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_9fb8efc736854bfc88182a5ef7aa639e, _ = codec
-                _bind_9fb8efc736854bfc88182a5ef7aa639e
+                let _bind_1c846bc39dab41a4ba9ebfd0dffedf74, _ = codec
+                _bind_1c846bc39dab41a4ba9ebfd0dffedf74
             
             let encode =
-                let _, _bind_6053c8517d9b47509514063fc5600665 = codec
-                _bind_6053c8517d9b47509514063fc5600665
+                let _, _bind_d5aff86537f040a780f40cd359cdbce6 = codec
+                _bind_d5aff86537f040a780f40cd359cdbce6
             
             Fleece.Newtonsoft.jfield<TestAllTypes, List<Int32>, List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<Single> -> List<Double> -> List<Boolean> -> List<String> -> TestAllTypes> 
                 ("repeatedInt32") (fun x -> x.repeatedInt32) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_a1b165c98faa4282a216fb7efa59834b, _ = codec
-                _bind_a1b165c98faa4282a216fb7efa59834b
+                let _bind_e4753c8f40cf486fbd471b0784998885, _ = codec
+                _bind_e4753c8f40cf486fbd471b0784998885
             
             let encode =
-                let _, _bind_0f8daa808542437296be5b0d98e9a57e = codec
-                _bind_0f8daa808542437296be5b0d98e9a57e
+                let _, _bind_3ebd882fade1493180d4ff61bf6ca61a = codec
+                _bind_3ebd882fade1493180d4ff61bf6ca61a
             
             Fleece.Newtonsoft.jfield<TestAllTypes, List<Int64>, List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<Single> -> List<Double> -> List<Boolean> -> List<String> -> TestAllTypes> 
                 ("repeatedInt64") (fun x -> x.repeatedInt64) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_2495ea784c5744528477ca97449ba662, _ = codec
-                _bind_2495ea784c5744528477ca97449ba662
+                let _bind_ec31a9dae24f4d9bb352ca38467e14f1, _ = codec
+                _bind_ec31a9dae24f4d9bb352ca38467e14f1
             
             let encode =
-                let _, _bind_4e2d793c66b94078805c93eff04634b8 = codec
-                _bind_4e2d793c66b94078805c93eff04634b8
+                let _, _bind_8b6e2ef5b4db478f853dec177e25547a = codec
+                _bind_8b6e2ef5b4db478f853dec177e25547a
             
             Fleece.Newtonsoft.jfield<TestAllTypes, List<UInt32>, List<UInt64> -> List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<Single> -> List<Double> -> List<Boolean> -> List<String> -> TestAllTypes> 
                 ("repeatedUint32") (fun x -> x.repeatedUint32) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_88667d8b1db24f4fbfbdf2d4c7f3fd18, _ = codec
-                _bind_88667d8b1db24f4fbfbdf2d4c7f3fd18
+                let _bind_ff57615f5e094d7c966eabdfb2a5eb7c, _ = codec
+                _bind_ff57615f5e094d7c966eabdfb2a5eb7c
             
             let encode =
-                let _, _bind_7721a7b1aadc4913b1fe76343bcdea90 = codec
-                _bind_7721a7b1aadc4913b1fe76343bcdea90
+                let _, _bind_4b0337eadb7547068af1332af686c531 = codec
+                _bind_4b0337eadb7547068af1332af686c531
             
             Fleece.Newtonsoft.jfield<TestAllTypes, List<UInt64>, List<Int32> -> List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<Single> -> List<Double> -> List<Boolean> -> List<String> -> TestAllTypes> 
                 ("repeatedUint64") (fun x -> x.repeatedUint64) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_f0043594c62843aaa82716e4c7e2e6bc, _ = codec
-                _bind_f0043594c62843aaa82716e4c7e2e6bc
+                let _bind_f93a7605cd5e49e8b2293f54a3cd67b3, _ = codec
+                _bind_f93a7605cd5e49e8b2293f54a3cd67b3
             
             let encode =
-                let _, _bind_493f64f9e09e49db872e31db306433eb = codec
-                _bind_493f64f9e09e49db872e31db306433eb
+                let _, _bind_2141b13f91fb4f13b9f5489a7441b1c9 = codec
+                _bind_2141b13f91fb4f13b9f5489a7441b1c9
             
             Fleece.Newtonsoft.jfield<TestAllTypes, List<Int32>, List<Int64> -> List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<Single> -> List<Double> -> List<Boolean> -> List<String> -> TestAllTypes> 
                 ("repeatedSint32") (fun x -> x.repeatedSint32) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_066a3faedcbc41a4b7b0126a294c7a70, _ = codec
-                _bind_066a3faedcbc41a4b7b0126a294c7a70
+                let _bind_5d2f6c739c6f4159a78040028c1fe6f1, _ = codec
+                _bind_5d2f6c739c6f4159a78040028c1fe6f1
             
             let encode =
-                let _, _bind_3d126fdf90db4f84a0e05a2e6fc90173 = codec
-                _bind_3d126fdf90db4f84a0e05a2e6fc90173
+                let _, _bind_a176dcf90ad344bab0878aee0dfaadbc = codec
+                _bind_a176dcf90ad344bab0878aee0dfaadbc
             
             Fleece.Newtonsoft.jfield<TestAllTypes, List<Int64>, List<UInt32> -> List<UInt64> -> List<Int32> -> List<Int64> -> List<Single> -> List<Double> -> List<Boolean> -> List<String> -> TestAllTypes> 
                 ("repeatedSint64") (fun x -> x.repeatedSint64) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_f16352202bc241f5b43e6fbc43dd5fea, _ = codec
-                _bind_f16352202bc241f5b43e6fbc43dd5fea
+                let _bind_1d5009afa1d7488ca2fe10517eeffb3b, _ = codec
+                _bind_1d5009afa1d7488ca2fe10517eeffb3b
             
             let encode =
-                let _, _bind_bee83f8ec2ce4c41af94f48d4671f516 = codec
-                _bind_bee83f8ec2ce4c41af94f48d4671f516
+                let _, _bind_337266e9c9204e839283df6d7d5bd400 = codec
+                _bind_337266e9c9204e839283df6d7d5bd400
             
             Fleece.Newtonsoft.jfield<TestAllTypes, List<UInt32>, List<UInt64> -> List<Int32> -> List<Int64> -> List<Single> -> List<Double> -> List<Boolean> -> List<String> -> TestAllTypes> 
                 ("repeatedFixed32") (fun x -> x.repeatedFixed32) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_496b757fb8b545f3a063ae06eaed3f18, _ = codec
-                _bind_496b757fb8b545f3a063ae06eaed3f18
+                let _bind_a0012528ed9e43b985676d1ab60d0987, _ = codec
+                _bind_a0012528ed9e43b985676d1ab60d0987
             
             let encode =
-                let _, _bind_64eb7cece04f4f84989503e56cd31516 = codec
-                _bind_64eb7cece04f4f84989503e56cd31516
+                let _, _bind_aae50734d12d4d9789303a81b9fc5f3a = codec
+                _bind_aae50734d12d4d9789303a81b9fc5f3a
             
             Fleece.Newtonsoft.jfield<TestAllTypes, List<UInt64>, List<Int32> -> List<Int64> -> List<Single> -> List<Double> -> List<Boolean> -> List<String> -> TestAllTypes> 
                 ("repeatedFixed64") (fun x -> x.repeatedFixed64) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_b7690646d6a541e38644a732e2233cd2, _ = codec
-                _bind_b7690646d6a541e38644a732e2233cd2
+                let _bind_a49774884d934b3e99d7d1570d8c1a4d, _ = codec
+                _bind_a49774884d934b3e99d7d1570d8c1a4d
             
             let encode =
-                let _, _bind_f54dc2827c6a4d4ab2fd1aa3cd9dd4db = codec
-                _bind_f54dc2827c6a4d4ab2fd1aa3cd9dd4db
+                let _, _bind_d99510280317486eb06c50ce4a262e2f = codec
+                _bind_d99510280317486eb06c50ce4a262e2f
             
             Fleece.Newtonsoft.jfield<TestAllTypes, List<Int32>, List<Int64> -> List<Single> -> List<Double> -> List<Boolean> -> List<String> -> TestAllTypes> 
                 ("repeatedSfixed32") (fun x -> x.repeatedSfixed32) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_061df61c2861426587b6f422fb4be5af, _ = codec
-                _bind_061df61c2861426587b6f422fb4be5af
+                let _bind_5b8b3637a2694b9e935b221f51e684dd, _ = codec
+                _bind_5b8b3637a2694b9e935b221f51e684dd
             
             let encode =
-                let _, _bind_c96c9e9e8253413a9c237e51396ca7e5 = codec
-                _bind_c96c9e9e8253413a9c237e51396ca7e5
+                let _, _bind_981b650c149647408c5b0fb4411f0cf3 = codec
+                _bind_981b650c149647408c5b0fb4411f0cf3
             
             Fleece.Newtonsoft.jfield<TestAllTypes, List<Int64>, List<Single> -> List<Double> -> List<Boolean> -> List<String> -> TestAllTypes> 
                 ("repeatedSfixed64") (fun x -> x.repeatedSfixed64) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_6db1c0e6e4ac4d1d8d4d39b3debde3df, _ = codec
-                _bind_6db1c0e6e4ac4d1d8d4d39b3debde3df
+                let _bind_8cacb0501c34438c8452f56e274ff8aa, _ = codec
+                _bind_8cacb0501c34438c8452f56e274ff8aa
             
             let encode =
-                let _, _bind_aebba320903f4fdfa51c45c34142c18f = codec
-                _bind_aebba320903f4fdfa51c45c34142c18f
+                let _, _bind_e7cf89b132ab465f87d703362ed6e4c5 = codec
+                _bind_e7cf89b132ab465f87d703362ed6e4c5
             
             Fleece.Newtonsoft.jfield<TestAllTypes, List<Single>, List<Double> -> List<Boolean> -> List<String> -> TestAllTypes> 
                 ("repeatedFloat") (fun x -> x.repeatedFloat) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_8bc245d4c61b4228be032e800a770277, _ = codec
-                _bind_8bc245d4c61b4228be032e800a770277
+                let _bind_f8dab6332b1e45ea9fc9f41d66a857c6, _ = codec
+                _bind_f8dab6332b1e45ea9fc9f41d66a857c6
             
             let encode =
-                let _, _bind_74ed1ccd1f394f788c027440fb1d8a05 = codec
-                _bind_74ed1ccd1f394f788c027440fb1d8a05
+                let _, _bind_f6035eb6145e4d2daae39c4d4bf200c9 = codec
+                _bind_f6035eb6145e4d2daae39c4d4bf200c9
             
             Fleece.Newtonsoft.jfield<TestAllTypes, List<Double>, List<Boolean> -> List<String> -> TestAllTypes> 
                 ("repeatedDouble") (fun x -> x.repeatedDouble) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_e858c2f636ec40eba3c1f45f8f87d15e, _ = codec
-                _bind_e858c2f636ec40eba3c1f45f8f87d15e
+                let _bind_9f8775b7e71345bda949d86c7e4bbb26, _ = codec
+                _bind_9f8775b7e71345bda949d86c7e4bbb26
             
             let encode =
-                let _, _bind_bcfed51e29a04a7f8f36f18477e64f0e = codec
-                _bind_bcfed51e29a04a7f8f36f18477e64f0e
+                let _, _bind_611c2841189a47e4b715d003f9a682a5 = codec
+                _bind_611c2841189a47e4b715d003f9a682a5
             
             Fleece.Newtonsoft.jfield<TestAllTypes, List<Boolean>, List<String> -> TestAllTypes> ("repeatedBool") 
                 (fun x -> x.repeatedBool) (decode, encode)
         |> fun codec -> 
             let decode =
-                let _bind_09daf2017c9d4ff696edc3d6cd8a15de, _ = codec
-                _bind_09daf2017c9d4ff696edc3d6cd8a15de
+                let _bind_cdaa8c8a258c463cb4210b2b6caf1057, _ = codec
+                _bind_cdaa8c8a258c463cb4210b2b6caf1057
             
             let encode =
-                let _, _bind_671d688558ae40c9b6f197f223c1eab2 = codec
-                _bind_671d688558ae40c9b6f197f223c1eab2
+                let _, _bind_6e6d1981cae34d82aa733cf4ce4b419d = codec
+                _bind_6e6d1981cae34d82aa733cf4ce4b419d
             
             Fleece.Newtonsoft.jfield<TestAllTypes, List<String>, TestAllTypes> ("repeatedString") 
                 (fun x -> x.repeatedString) (decode, encode)

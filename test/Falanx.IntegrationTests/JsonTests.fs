@@ -4,7 +4,7 @@ open Expecto
 open protobuf_unittest3
 open Fleece
 open Newtonsoft
-
+open Jet.Generated
 
 let jFormatterTests = 
     testList "Json parser" [
@@ -19,3 +19,16 @@ let jFormatterTests =
                     failwithf "Failed to parse json: %s" err
         }
     ]
+
+//let simpleMessageTest = 
+//    testList "Simple Message" [
+//        test "All props" {
+//            let json = "{ \"single_int32\": 10 }"
+//            //let msg = 
+//            match msg.testOneof with
+//                | Some(SampleMessage.First_name(fname)) ->
+//                    Expect.equal "first name" fname "Invalid first name"
+//                | _ -> failwith "Unexpected variant"
+//        }
+//    ]
+    

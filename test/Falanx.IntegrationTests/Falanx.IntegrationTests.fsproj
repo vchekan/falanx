@@ -8,7 +8,10 @@
     <EmbeddedResource Remove="schemas\**" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Parser.fs" />
+    <Compile Include="Jet.Generated.Test.fs" />
     <Compile Include="JsonTests.fs" />
+    <Compile Include="Mock1.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
