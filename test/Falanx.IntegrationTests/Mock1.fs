@@ -6,7 +6,7 @@ open Falanx.Json.Parser
 type TestAllTypesMock =
     { mutable singleInt32 : int option
       mutable singleInt64 : int64 option
-      mutable singleUint32 : UInt32 option
+      (*mutable singleUint32 : UInt32 option
       mutable singleUint64 : UInt64 option
       mutable singleSint32 : int option
       mutable singleSint64 : int64 option
@@ -31,16 +31,17 @@ type TestAllTypesMock =
       mutable repeatedFloat : float32 ResizeArray
       mutable repeatedDouble : float ResizeArray
       mutable repeatedBool : bool ResizeArray
-      mutable repeatedString : string ResizeArray }
+      mutable repeatedString : string ResizeArray*) 
+    }
 
-    static member private falanxKeyValueMap key = 
+    (*static member private falanxKeyValueMap key = 
         [ 
             "single_int32", (Falanx.Json.Parser.matchInt)
             "single_int64", (Falanx.Json.Parser.matchInt)
         ] 
         |> Map.ofList
         |> Map.tryFind key
-
+    *)
     static member ofJson2(json: string) =
 
         let mutable singleInt32 = None
@@ -76,17 +77,42 @@ type TestAllTypesMock =
             parser {
                 let state = {ParseState.json = json; pos = 0}
                 do! startObject state
-                // matchField should 
-                //      return Option, until next field is matching.
-                //      return key
-                // "match" by key 
-                //
-                //
-                let! f = matchField TestAllTypesMock.falanxKeyValueMap state
-                do! endObject state
-                return f
-            }
+                (*matchKeyAndColumn2 state
+                |> Seq.iter(fun key ->
+                    match key with
+                        | "single_int32" -> 
+                            let! t = matchInt state
+                            singleInt32 <- int t 
+                        | _ -> log <| sprintf "Unknown field '%s'" key                            
+                )
+                *)
 
+
+                let mutable finish = false
+                while not finish do
+                    let! key = matchKeyAndColumn state
+                    printfn "mock: got key: %A" key
+                    match key with 
+                        Some key ->
+                            match key with 
+                                | "single_int32" -> 
+                                    let! v = matchInt64 state
+                                    singleInt32 <- Some(int v)
+                                | _ -> 
+                                    printfn "Unknown field '%s'" key
+                                    finish <- false
+                        | None ->                                
+                            finish <- true
+                            do! endObject state
+
+
+                let ret = {
+                    TestAllTypesMock.singleInt32 = singleInt32
+                    singleInt64 = Some 0L
+                }
+                return Ok(ret)
+
+            }
 
         printfn "x: %A" x
 

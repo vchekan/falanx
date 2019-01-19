@@ -33,7 +33,8 @@ type ParserBuilder() =
     member __.Return(x) = Ok(x)
     member __.ReturnFrom(x) = x
     member self.Zero() = self.Return ()
-    member __.Delay(f) = f()
+    member __.Delay(f) = f
+    member __.Run(f) = f()
     member __.Bind(x, f) =
         match x with
             | Ok(a) -> f(a)
@@ -43,7 +44,8 @@ type ParserBuilder() =
             self.Bind(body(), fun() -> self.While(guard, body)) 
         else 
             self.Zero()
-
+    member self.Combine (a, b) =
+        self.Bind(a, b)
 let parser = ParserBuilder()
 
 let matchChar (ch: char) (state: ParseState) : ParseResult<unit> = 
@@ -116,7 +118,8 @@ let ws state =
     r()
     state
             
-let matchInt (state: ParseState) : ParseResult<JValue> =
+let matchInt64 (state: ParseState) : ParseResult<int64> =
+    log "Matching int64"
     ws state |> ignore
     let mutable pos' = state.pos
     let rec r() =
@@ -133,29 +136,36 @@ let matchInt (state: ParseState) : ParseResult<JValue> =
     else 
         let i = state.json.Substring(pos', state.pos - pos')
         match Int64.TryParse i with
-            | (true, i) -> Ok(JValue.Int i)
+            | (true, i) -> 
+                log <| sprintf "Matched int64 %d" i
+                Ok(i)
             // TODO: truncate i if it is too long or contains newlines
             | (false, _) -> Error(sprintf "Expected int but got: '%s'" i)
         
+let peek state =
+    if state.pos >= state.json.Length then
+        Error <| sprintf "peek: End of stream at %d" state.pos
+    else
+        let ch = state.json.Chars state.pos
+        log <| sprintf "peek at %d: '%c'" state.pos ch
+        Ok <| ch
 
-
-
-let matchField (valParser: string -> Option<Generator<JValue>>) (state: ParseState) : ParseResult<string * JValue> =
+let matchKeyAndColumn (state: ParseState) : ParseResult<Option<string>> =
     log "Matching field"
     parser {
-        let! key = 
-            ws >> matchString <| state
-        log <| sprintf "Found key %s" key
+        let! ch = ws >> peek <| state
+        if ch = '}' then
+            return None
+        else        
+            let! key = 
+                ws >> matchString <| state
+            log <| sprintf "Found key %s" key
 
-        do! matchChar ':' state
-        let! valParser = 
-            match valParser key with
-                | Some(p) -> Ok p
-                | None -> Error <| sprintf "Field not found: '%s'" key
-        let! value = valParser state
-        log <| sprintf "found value %A" value
-        return (key, value)
+            do! matchChar ':' state
+            return Some key
     }
+let matchKeyAndColumn2 (state: ParseState) : seq<string> =
+    failwith "notimplemented yet"
 
 //
 // Convinience functions
